@@ -5,14 +5,21 @@ import helper.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class HomePage extends AbstractPage {
 
-    WrestlerData wrestlerData = new WrestlerData("Dart","Weider","12-05-1989","Skajvoker","Volynska","Kyiv","Dinamo",
-            "Kolos","Joda","Palladin","FS","Senior","2017","Recieved");
+    WrestlerData wrestlerData = new WrestlerData("Australina","Americ","12-05-1989","Skajvoker","Volynska","Kyiv",
+            "Dinamo",
+            "Kolos","Joda","Palladin","FW","Cadet","2016","Recieved");
+
+    WrestlerData wrestlerDataforUpdate = new WrestlerData("Africana","Antarctida","12-05-1979","Skajvoke","Kyiv",
+            "Zaporizka","Kolos",
+            "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+
     String wrestlerFullName = wrestlerData.lastName + " " + wrestlerData.firstName + " " + wrestlerData.middleName;
+    String wrestlerFullUpdateName = wrestlerDataforUpdate.lastName + " " + wrestlerDataforUpdate.firstName + " " +
+            wrestlerDataforUpdate.middleName;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -25,24 +32,20 @@ public class HomePage extends AbstractPage {
         buttonLogin.click();
     }
 
-
     public void open(WebDriver driver) {
         driver.get(ConfigProperties.getProperty("url"));
         waitForPageLoad(driver);
     }
 
     public void wrestlerCRUD() {
-
-        createNewWrestler();
+        createWrestler();
         findWrestler();
         verifyWrestler();
         updateWrestler();
         deleteWrestler();
     }
 
-
-    public void createNewWrestler() {
-
+    public void createWrestler() {
         buttonCreateNewWrestler.click();
         clearAndSendKeys(fieldLastName,wrestlerData.lastName);
         clearAndSendKeys(fieldFirstName,wrestlerData.firstName);
@@ -59,9 +62,12 @@ public class HomePage extends AbstractPage {
         selectFromDD(fieldYear,wrestlerData.year);
         selectFromDD(fieldCard,wrestlerData.card);
         buttonSave.click();
+
+
     }
 
     private void findWrestler() {
+        wrestlerPage.click();
         wrestlerPage.click();
         clearAndSendKeys(fieldSearchFor, wrestlerFullName);
         buttonSearchFor.click();
@@ -73,11 +79,40 @@ public class HomePage extends AbstractPage {
     }
 
     private void updateWrestler() {
+        firstWrestlerInSearch.click();
+        clickFirstPage.click();
+        closeFirstPage.click();
+        clickFirstPage.click();
+        clearAndSendKeys(fieldLastName,wrestlerDataforUpdate.lastName);
+        clearAndSendKeys(fieldFirstName,wrestlerDataforUpdate.firstName);
+        clearAndSendKeys(fieldDateOfBirth,wrestlerDataforUpdate.dateOfBirth);
+        clearAndSendKeys(fieldMiddleName,wrestlerDataforUpdate.middleName);
+        selectFromDD(fieldRegion1,wrestlerDataforUpdate.regionFirst);
+        selectFromDD(fieldRegion2,wrestlerDataforUpdate.regionSecond);
+        selectFromDD(fieldFST1,wrestlerDataforUpdate.fstFirst);
+        selectFromDD(fieldFST2,wrestlerDataforUpdate.fstSecond);
+        clearAndSendKeys(fieldTrainer1,wrestlerDataforUpdate.trainerFirst);
+        clearAndSendKeys(fieldTrainer2,wrestlerDataforUpdate.trainerSecond);
+        selectFromDD(fieldStyle,wrestlerDataforUpdate.style);
+        selectFromDD(fieldAge,wrestlerDataforUpdate.age);
+        selectFromDD(fieldYear,wrestlerDataforUpdate.year);
+        selectFromDD(fieldCard,wrestlerDataforUpdate.card);
+        buttonSave.click();
+
+        wrestlerPage.click();
+        wrestlerPage.click();
+        clearAndSendKeys(fieldSearchFor, wrestlerFullUpdateName);
+        buttonSearchFor.click();
+
+        assertThat("The first row expected contains " + wrestlerFullUpdateName + " but was: " + firstWrestlerInSearch.getText(),
+                firstWrestlerInSearch.getText().equals(wrestlerFullUpdateName));
     }
 
     private void deleteWrestler() {
+        clickFirstPage.click();
+        deleteWrestler.click();
+        deleteСonfirm.click();
     }
-
 
     @FindBy(xpath = "//div/input [1]")
     public WebElement fieldLogin;
@@ -147,5 +182,17 @@ public class HomePage extends AbstractPage {
 
     @FindBy(xpath = "//tbody/tr[1]/td[2]")
     public WebElement firstWrestlerInSearch;
+
+    @FindBy(xpath = "//div/button[@ng-click=\"delete()\"]")
+    public WebElement deleteWrestler;
+
+    @FindBy(xpath = "//button[@ng-click=\"ok()\"]")
+    public WebElement deleteСonfirm;
+
+    @FindBy(xpath = "//li[2]//div//span")
+    public WebElement closeFirstPage;
+
+    @FindBy(xpath = "//li[2]//div[1]")
+    public WebElement clickFirstPage;
 
 }

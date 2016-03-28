@@ -1,5 +1,6 @@
 package pages;
 
+import data.WrestlerData;
 import helper.ScreenShot;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

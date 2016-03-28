@@ -1,5 +1,6 @@
-import org.junit.Test;
+
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 import pages.HomePage;
 
 public class RegisterTest extends BaseTest {

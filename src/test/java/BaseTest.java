@@ -1,20 +1,15 @@
 
-import data.WrestlerData;
 import helper.ConfigProperties;
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterMethod;
+
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
-
-    public WrestlerData wrestler = new WrestlerData("Linkoln", "Alex", "12-05-1989", "Lion",
-            "Kyivska", "Odeska", "Dinamo", "SK",
-           "Gashkek", "Scorpion", "FS", "Senior", "2017", "Recieved");
 
     public static WebDriver driver;
 
@@ -35,9 +30,9 @@ public abstract class BaseTest {
         return driver;
     }
 
-   @After
+   @AfterMethod
     public void tearDown() {
-    //driver.close();
+    driver.close();
     }
 
 
