@@ -7,7 +7,6 @@ public class RegisterTest extends BaseTest {
 
     HomePage homePage = PageFactory.initElements(getWebDriver(), HomePage.class);
 
-
     @Test
     public void Register(){
         homePage.login(driver);

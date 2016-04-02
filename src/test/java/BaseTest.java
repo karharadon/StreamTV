@@ -30,7 +30,7 @@ public abstract class BaseTest {
         return driver;
     }
 
-   @AfterMethod
+   //@AfterMethod
     public void tearDown() {
     driver.close();
     }

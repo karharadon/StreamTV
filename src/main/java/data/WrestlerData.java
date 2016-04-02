@@ -37,5 +37,22 @@ public class WrestlerData {
         this.card = card;
 
     }
+    //TODO use one method for two sportsmens, maybe delete
+   /* public  void wrestler (WrestlerData wrestlerData){
+        this.lastName = wrestlerData.lastName;
+        this.firstName = wrestlerData.firstName;
+        this.dateOfBirth = wrestlerData.dateOfBirth;
+        this.middleName = wrestlerData.middleName;
+        this.regionFirst = wrestlerData.regionFirst;
+        this.regionSecond = wrestlerData.regionSecond ;
+        this.fstFirst = wrestlerData.fstFirst;
+        this.fstSecond = wrestlerData.fstSecond;
+        this.trainerFirst = wrestlerData.trainerFirst;
+        this.trainerSecond = wrestlerData.trainerSecond;
+        this.style = wrestlerData.style;
+        this.age = wrestlerData.age;
+        this.year = wrestlerData.year;
+        this.card = wrestlerData.card;
+    }*/
 }
 

@@ -24,11 +24,6 @@ public abstract class AbstractPage {
         webElement.sendKeys(text);
     }
 
-    public void clearAndSendKeys(WebElement webElement, int text){
-        webElement.clear();
-        webElement.sendKeys(Integer.toString(text));
-    }
-
     public void waitWhenClickable(WebElement element, int timeSec){
         (new WebDriverWait(driver, timeSec)).until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -38,6 +33,10 @@ public abstract class AbstractPage {
         select.selectByVisibleText(text);
     }
 
+    public String getComboboxElement (WebElement webElement) {
+        Select comboBox = new Select(webElement);
+        return comboBox.getFirstSelectedOption().getText();
+    }
 
     void waitForPageLoad(WebDriver driver) {
         ExpectedCondition<Boolean> pageLoadCondition = new
