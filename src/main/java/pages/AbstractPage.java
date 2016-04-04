@@ -2,6 +2,7 @@ package pages;
 
 import data.WrestlerData;
 import helper.ScreenShot;
+import org.omg.CORBA.Object;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

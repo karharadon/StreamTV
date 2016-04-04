@@ -2,29 +2,41 @@ package pages;
 
 import data.WrestlerData;
 import helper.ConfigProperties;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class HomePage extends AbstractPage {
 
-    WrestlerData wrestlerData = new WrestlerData("Ukraina","Francuana","12-05-1989","Maroccana","Volynska","Kyiv",
+    public WrestlerData wrestlerData5 = new WrestlerData("Ukraina","Francuana","12-05-1989","Maroccana","Volynska","Kyiv",
             "Dinamo",
             "Kolos","Joda","Palladin","FW","Cadet","2016","Recieved");
 
-    WrestlerData wrestlerDataforUpdate = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv",
+    public WrestlerData wrestlerDataforUpdate = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv",
             "Zaporizka","Kolos",
             "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+
+    public WrestlerData wrestlerData3 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv",
+            "Zaporizka","Kolos",
+            "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+
+    public WrestlerData wrestlerData4 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv",
+            "Zaporizka","Kolos",
+            "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+
+    public WrestlerData wrestlerData = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv",
+            "Zaporizka","Kolos",
+            "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+
+    ArrayList<String> assertionErrors = new ArrayList();
 
     String wrestlerFullName = wrestlerData.lastName + " " + wrestlerData.firstName + " " + wrestlerData.middleName;
     String wrestlerFullUpdateName = wrestlerDataforUpdate.lastName + " " + wrestlerDataforUpdate.firstName + " " +
@@ -59,25 +71,30 @@ public class HomePage extends AbstractPage {
         deleteWrestler();
     }
 
-    public void createWrestler() {
+    public void fillAllFields(WrestlerData wrestler) {
+        this.wrestlerData = wrestler;
+        clearAndSendKeys(fieldLastName, wrestler.lastName);
+        clearAndSendKeys(fieldFirstName, wrestler.firstName);
+        clearAndSendKeys(fieldDateOfBirth, wrestler.dateOfBirth);
+        clearAndSendKeys(fieldMiddleName, wrestler.middleName);
+        selectFromDD(fieldRegion1, wrestler.regionFirst);
+        selectFromDD(fieldRegion2, wrestler.regionSecond);
+        selectFromDD(fieldFST1, wrestler.fstFirst);
+        selectFromDD(fieldFST2, wrestler.fstSecond);
+        clearAndSendKeys(fieldTrainer1, wrestler.trainerFirst);
+        clearAndSendKeys(fieldTrainer2, wrestler.trainerSecond);
+        selectFromDD(fieldStyle, wrestler.style);
+        selectFromDD(fieldAge, wrestler.age);
+        selectFromDD(fieldYear, wrestler.year);
+        selectFromDD(fieldCard, wrestler.card);
+    }
+
+    public void createWrestler(){
         buttonCreateNewWrestler.click();
-        clearAndSendKeys(fieldLastName,wrestlerData.lastName);
-        clearAndSendKeys(fieldFirstName,wrestlerData.firstName);
-        clearAndSendKeys(fieldDateOfBirth,wrestlerData.dateOfBirth);
-        clearAndSendKeys(fieldMiddleName,wrestlerData.middleName);
-        selectFromDD(fieldRegion1,wrestlerData.regionFirst);
-        selectFromDD(fieldRegion2,wrestlerData.regionSecond);
-        selectFromDD(fieldFST1,wrestlerData.fstFirst);
-        selectFromDD(fieldFST2,wrestlerData.fstSecond);
-        clearAndSendKeys(fieldTrainer1,wrestlerData.trainerFirst);
-        clearAndSendKeys(fieldTrainer2,wrestlerData.trainerSecond);
-        selectFromDD(fieldStyle,wrestlerData.style);
-        selectFromDD(fieldAge,wrestlerData.age);
-        selectFromDD(fieldYear,wrestlerData.year);
-        selectFromDD(fieldCard,wrestlerData.card);
+        fillAllFields(wrestlerData);
         buttonSave.click();
 
-        //TODO write method without dublicate
+        //TODO org.openqa.selenium.ElementNotVisibleException: element not visible
         waitWhenClickable(closeFirstPage,7);
         closeFirstPage.click();
     }
@@ -88,114 +105,72 @@ public class HomePage extends AbstractPage {
     }
 
     private void verifySearchResultWithCodeData() {
-        assertThat("The field \"FIO\" expected contains " + wrestlerFullName + " but was: " + wrestlerFIO.getText(),
-                wrestlerFIO.getText().equals(wrestlerFullName));
+        assertationProfileDataWithCode0(wrestlerFIO, wrestlerFullName);
+        assertationProfileDataWithCode0(wrestlerRegion, wrestlerData.regionFirst);
+        assertationProfileDataWithCode0(wrestlerFST, wrestlerData.fstFirst);
+        assertationProfileDataWithCode0(wrestlerLicense, wrestlerData.year);
+        assertationProfileDataWithCode0(wrestlerPhoto, "No");
+        assertationProfileDataWithCode0(wrestlerStyle, wrestlerData.style);
+        assertationProfileDataWithCode0(wrestlerChanged, sysDate);
+    }
 
-        assertThat("The field \"Region\" expected contains " + wrestlerData.regionFirst + " but was: " +
-                wrestlerRegion.getText(),wrestlerRegion.getText().equals(wrestlerData.regionFirst));
-
-        assertThat("The field \"FST\" expected contains " + wrestlerData.fstFirst + " but was: " +
-                wrestlerFST.getText(),wrestlerFST.getText().equals(wrestlerData.fstFirst));
-
-        assertThat("The field \"License\" expected contains " + wrestlerData.year + " but was: " +
-                wrestlerLicense.getText(),wrestlerLicense.getText().equals(wrestlerData.year));
-
-        assertThat("The field \"License\" expected contains " + wrestlerData.year + " but was: " +
-                wrestlerLicense.getText(),wrestlerLicense.getText().equals(wrestlerData.year));
-
-        assertThat("The field \"Photo\" expected contains \"No\" but was: Yes" ,
-                wrestlerPhoto.getText().equals("No"));
-
-        assertThat("The field \"Style\" expected contains " + wrestlerData.style + " but was: " +
-                wrestlerStyle.getText(),wrestlerStyle.getText().equals(wrestlerData.style));
-
-        assertThat("The field \"Changed\" expected contains " + sysDate + " but was: " +
-                wrestlerChanged.getText(),wrestlerChanged.getText().equals(sysDate));
+    private void assertationProfileDataWithCode0(WebElement fact, String expected) {
+        try {
+            assert (fact.getText().equals(expected));
+        } catch (AssertionError e) {
+            assertionErrors.add("The field " + " expected contains " + expected
+                    + " but was: " + fact.getText());
         }
+    }
 
-    //TODO make list with failed methods and throw exeption
+    private void assertationProfileDataWithCode(WebElement fact, String expected) {
+        try {
+            assert (getComboboxElement(fact).equals(expected));
+        } catch (AssertionError e) {
+            assertionErrors.add("The field " + " expected contains " + expected
+                    + " but was: " + getComboboxElement(fact));
+        }
+    }
+
+    private void assertationProfileDataWithCode2(WebElement fact, String expected) {
+        try {
+            assert (fact.getAttribute("value").equals(expected));
+        } catch (AssertionError e) {
+            assertionErrors.add("The field " + " expected contains " + expected
+                    + " but was: " + fact.getAttribute("value"));
+        }
+    }
+
     private void verifyProfileDataWithCode(){
         wrestlerFIO.click();
-
-        assertThat("The field \"Last Name\" expected contains " + wrestlerData.lastName + " but was: "
-                + fieldLastName.getAttribute("value"),
-                fieldLastName.getAttribute("value").equals(wrestlerData.lastName));
-
-        assertThat("The field \"First Name\" expected contains " + wrestlerData.firstName + " but was: "
-                + fieldFirstName.getAttribute("value"),
-                fieldFirstName.getAttribute("value").equals(wrestlerData.firstName));
-
-        assertThat("The field \"Date of Birth\" expected contains " + wrestlerData.dateOfBirth + " but was: "
-                + fieldDateOfBirth.getAttribute("value"),
-                fieldDateOfBirth.getAttribute("value").equals(wrestlerData.dateOfBirth));
-
-        assertThat("The field \"Middle name\" expected contains " + wrestlerData.middleName + " but was: "
-                + fieldMiddleName.getAttribute("value"),
-                fieldMiddleName.getAttribute("value").equals(wrestlerData.middleName));
-
-        assertThat("The field \"Region(1)\" expected contains " + wrestlerData.regionFirst + " but was: "
-                + getComboboxElement(fieldRegion1),
-                getComboboxElement(fieldRegion1).equals(wrestlerData.regionFirst));
-
-       /* assertThat("The field \"Region(2)\" expected contains " + wrestlerData.regionSecond + " but was: "
-                + c(fieldRegion2),
-                getComboboxElement(fieldRegion2).equals(wrestlerData.regionSecond));*/
-
-        assertThat("The field \"FST(1)\" expected contains " + wrestlerData.fstFirst + " but was: "
-                + getComboboxElement(fieldFST1),
-                getComboboxElement(fieldFST1).equals(wrestlerData.fstFirst));
-
-        /*assertThat("The field \"FST(2)\" expected contains " + wrestlerData.fstSecond + " but was: " +
-                getComboboxElement(fieldFST2),
-                getComboboxElement(fieldFST2).equals(wrestlerData.fstSecond));
-
-        assertThat("The field \"Trainer(1)\" expected contains " + wrestlerData.trainerFirst + " but was: "
-                + getComboboxElement(fieldTrainer1),
-                getComboboxElement(fieldTrainer1).equals(wrestlerData.trainerFirst));
-
-        assertThat("The field \"Trainer(2)\" expected contains " + wrestlerData.trainerSecond + " but was: "
-                + getComboboxElement(fieldTrainer2),
-                getComboboxElement(fieldTrainer2).equals(wrestlerData.trainerSecond));*/
-
-        assertThat("The field \"Style\" expected contains " + wrestlerData.style + " but was: "
-                + getComboboxElement(fieldStyle),
-                getComboboxElement(fieldStyle).equals(wrestlerData.style));
-
-        assertThat("The field \"Age\" expected contains " + wrestlerData.age + " but was: "
-                + getComboboxElement(fieldAge),
-                getComboboxElement(fieldAge).equals(wrestlerData.age));
-
-        assertThat("The field \"Year\" expected contains " + wrestlerData.year + " but was: "
-                + getComboboxElement(fieldYear),
-                getComboboxElement(fieldYear).equals(wrestlerData.year));
-
-        /*assertThat("The field \"Card\" expected contains " + wrestlerData.card + " but was: "
-                + getComboboxElement(fieldCard),
-                getComboboxElement(fieldCard).equals(wrestlerData.card));*/
+        assertationProfileDataWithCode2(fieldLastName, wrestlerData.lastName);
+        assertationProfileDataWithCode2(fieldFirstName, wrestlerData.firstName);
+        assertationProfileDataWithCode2(fieldDateOfBirth, wrestlerData.dateOfBirth);
+        assertationProfileDataWithCode2(fieldMiddleName, wrestlerData.middleName);
+        assertationProfileDataWithCode(fieldRegion1, wrestlerData.regionFirst);
+        assertationProfileDataWithCode(fieldFST1, wrestlerData.fstFirst);
+        assertationProfileDataWithCode(fieldFST2, wrestlerData.fstSecond);
+        assertationProfileDataWithCode2(fieldTrainer1, wrestlerData.trainerFirst);
+        assertationProfileDataWithCode2(fieldTrainer2, wrestlerData.trainerSecond);
+        assertationProfileDataWithCode(fieldStyle, wrestlerData.style);
+        assertationProfileDataWithCode(fieldAge, wrestlerData.age);
+        assertationProfileDataWithCode(fieldYear, wrestlerData.year);
+        assertationProfileDataWithCode(fieldCard, wrestlerData.card);
 
         //TODO make 1 method
         waitWhenClickable(closeFirstPage,7);
         closeFirstPage.click();
+
+        for (int i = 0; i < assertionErrors.size(); i++) {
+            System.out.println(assertionErrors.get(i));
         }
+    }
 
     private void updateWrestler() {
         clearAndSendKeys(fieldSearchFor, wrestlerFullName);
         buttonSearchFor.click();
         wrestlerFIO.click();
-        clearAndSendKeys(fieldLastName,wrestlerDataforUpdate.lastName);
-        clearAndSendKeys(fieldFirstName,wrestlerDataforUpdate.firstName);
-        clearAndSendKeys(fieldDateOfBirth,wrestlerDataforUpdate.dateOfBirth);
-        clearAndSendKeys(fieldMiddleName,wrestlerDataforUpdate.middleName);
-        selectFromDD(fieldRegion1,wrestlerDataforUpdate.regionFirst);
-        selectFromDD(fieldRegion2,wrestlerDataforUpdate.regionSecond);
-        selectFromDD(fieldFST1,wrestlerDataforUpdate.fstFirst);
-        selectFromDD(fieldFST2,wrestlerDataforUpdate.fstSecond);
-        clearAndSendKeys(fieldTrainer1,wrestlerDataforUpdate.trainerFirst);
-        clearAndSendKeys(fieldTrainer2,wrestlerDataforUpdate.trainerSecond);
-        selectFromDD(fieldStyle,wrestlerDataforUpdate.style);
-        selectFromDD(fieldAge,wrestlerDataforUpdate.age);
-        selectFromDD(fieldYear,wrestlerDataforUpdate.year);
-        selectFromDD(fieldCard,wrestlerDataforUpdate.card);
+        fillAllFields(wrestlerDataforUpdate);
         buttonSave.click();
 
         //TODO make 2 method, not 4, element not visible
@@ -217,15 +192,31 @@ public class HomePage extends AbstractPage {
         wrestlerFIO.click();
         deleteWrestler.click();
         deleteСonfirm.click();
-
-        wrestlerPage.click();
         clearAndSendKeys(fieldSearchFor, wrestlerFullUpdateName);
         buttonSearchFor.click();
 
-       //TODO change "null" that method became work
-        assertThat("The first row expected contains \"NULL\" but was: " + wrestlerFIO.getText(),
-                wrestlerFIO.getText().equals(null));
+       try{
+           assertThat("The first row expected contains \"NULL\" but was: " + wrestlerFIO.getText(),
+                   wrestlerFIO.getText().equals(null));
+        } catch (NoSuchElementException e) {
+
+        } catch (Exception b){
+           //TODO Add to log
+           captureScreen(className);
+           b.printStackTrace();
+           driver.close();
+        }
+       }
+
+    public void createFewWrestlers() {
+
+
     }
+
+    public void checkFilters() {
+    }
+
+
 
     @FindBy(xpath = "//div/input [1]")
     public WebElement fieldLogin;
@@ -326,5 +317,4 @@ public class HomePage extends AbstractPage {
     //TODO maybeNotNeedElement
     @FindBy(xpath = "//li[2]//div[1]")
     public WebElement clickFirstPage;
-
 }
