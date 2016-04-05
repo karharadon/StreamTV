@@ -14,7 +14,7 @@ public class WrestlerData {
     public String trainerSecond;
     public String style;
     public String age;
-    public String year;
+    public String license;
     public String card;
 
 
@@ -33,26 +33,26 @@ public class WrestlerData {
         this.trainerSecond = trainerSecond;
         this.style = style;
         this.age = age;
-        this.year = year;
+        this.license = year;
         this.card = card;
 
     }
     //TODO use one method for two sportsmens, maybe delete
-   /* public  void wrestler (WrestlerData wrestlerData){
-        this.lastName = wrestlerData.lastName;
-        this.firstName = wrestlerData.firstName;
-        this.dateOfBirth = wrestlerData.dateOfBirth;
-        this.middleName = wrestlerData.middleName;
-        this.regionFirst = wrestlerData.regionFirst;
-        this.regionSecond = wrestlerData.regionSecond ;
-        this.fstFirst = wrestlerData.fstFirst;
-        this.fstSecond = wrestlerData.fstSecond;
-        this.trainerFirst = wrestlerData.trainerFirst;
-        this.trainerSecond = wrestlerData.trainerSecond;
-        this.style = wrestlerData.style;
-        this.age = wrestlerData.age;
-        this.year = wrestlerData.year;
-        this.card = wrestlerData.card;
+   /* public  void wrestler (WrestlerData wrestler1){
+        this.lastName = wrestler1.lastName;
+        this.firstName = wrestler1.firstName;
+        this.dateOfBirth = wrestler1.dateOfBirth;
+        this.middleName = wrestler1.middleName;
+        this.regionFirst = wrestler1.regionFirst;
+        this.regionSecond = wrestler1.regionSecond ;
+        this.fstFirst = wrestler1.fstFirst;
+        this.fstSecond = wrestler1.fstSecond;
+        this.trainerFirst = wrestler1.trainerFirst;
+        this.trainerSecond = wrestler1.trainerSecond;
+        this.style = wrestler1.style;
+        this.age = wrestler1.age;
+        this.license = wrestler1.license;
+        this.card = wrestler1.card;
     }*/
 }
 

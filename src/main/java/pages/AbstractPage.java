@@ -4,12 +4,18 @@ import data.WrestlerData;
 import helper.ScreenShot;
 import org.omg.CORBA.Object;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public abstract class AbstractPage {
@@ -25,8 +31,9 @@ public abstract class AbstractPage {
         webElement.sendKeys(text);
     }
 
-    public void waitWhenClickable(WebElement element, int timeSec){
+    public void waitWhenClickableAndClick(WebElement element, int timeSec){
         (new WebDriverWait(driver, timeSec)).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
 
     public void selectFromDD(WebElement element, String text) {
@@ -55,4 +62,50 @@ public abstract class AbstractPage {
         screenShot.captureScreen(fileName);
     }
 
+    protected void assertationProfileDataWithCode0(WebElement fact, String expected, ArrayList<String> err) {
+        try {
+            assert (fact.getText().equals(expected));
+        } catch (AssertionError e) {
+            err.add("The field " + " expected contains " + expected
+                    + " but was: " + fact.getText());
+        }
+    }
+
+    protected void assertationProfileDataWithCode(WebElement fact, String expected, ArrayList<String> err) {
+        try {
+            assert (getComboboxElement(fact).equals(expected));
+        } catch (AssertionError e) {
+            err.add("The field " + " expected contains " + expected
+                    + " but was: " + getComboboxElement(fact));
+        }
+    }
+
+    protected void assertationProfileDataWithCode2(WebElement fact, String expected, ArrayList<String> err) {
+        try {
+            assert (fact.getAttribute("value").equals(expected));
+        } catch (AssertionError e) {
+            err.add("The field " + " expected contains " + expected
+                    + " but was: " + fact.getAttribute("value"));
+        }
+    }
+    protected void checkDeletion(WebElement element ) {
+        try{
+            assertThat("The first row expected contains \"NULL\" but was: " + element.getText(),
+                    element.getText().equals(null));
+        } catch (NoSuchElementException e) {
+
+        } catch (Exception b){
+            //TODO Add to log
+            captureScreen(className);
+            b.printStackTrace();
+            driver.close();
+        }
+    }
+
+    public void checkFilter(List<WebElement> list, String filter){
+        for (int i = 0; list.size()-1 >= 0; i++){
+            assertThat("The field " + filter + " expected "+ filter +"but was: " + list.get(i).getAttribute("value"),
+                    list.get(i).getAttribute("value").equals(filter));
+        }
+    }
 }

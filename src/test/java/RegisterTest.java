@@ -8,8 +8,17 @@ public class RegisterTest extends BaseTest {
     HomePage homePage = PageFactory.initElements(getWebDriver(), HomePage.class);
 
     @Test
-    public void Register(){
+    public void CRUD(){
         homePage.login(driver);
         homePage.wrestlerCRUD();
+    }
+
+    @Test
+    public void Filters(){
+        homePage.login(driver);
+        homePage.createFewWrestlers();
+        //homePage.useFilters();
+        //homePage.checkFilters();
+        homePage.deleteWrestlers();
     }
 }
