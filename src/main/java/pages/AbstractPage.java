@@ -90,17 +90,7 @@ public abstract class AbstractPage {
     }
 
     protected void checkDeletion(WebElement element) {
-        try {
-            assertThat("The first row expected contains \"NULL\" but was: " + element.getText(),
-                    element.getText().equals(null));
-        } catch (NoSuchElementException e) {
 
-        } catch (Exception b) {
-            //TODO Add to log
-            captureScreen(className);
-            b.printStackTrace();
-            driver.close();
-        }
     }
 
     public void checkFilter(List<WebElement> list, String filter) {

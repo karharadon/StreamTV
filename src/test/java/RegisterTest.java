@@ -17,9 +17,15 @@ public class RegisterTest extends BaseTest {
     @Test
     public void Filters(){
         homePage.login(driver);
-        homePage.createFewWrestlers();
+        homePage.createFewWrestlersForTestingFilters();
         homePage.useFilters();
-        homePage.checkFilters();
-        homePage.deleteWrestlers();
+        homePage.checkAllFilters();
+        homePage.deleteWrestlersCreatedForTestingFilters();
+    }
+
+    @Test
+    public void deleteAllMyWrestlers(){
+        homePage.login(driver);
+        homePage.deleteAllMyWrestlers();
     }
   }

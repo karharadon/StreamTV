@@ -2,6 +2,7 @@ package pages;
 
 import data.WrestlerData;
 import helper.ConfigProperties;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -24,16 +25,16 @@ public class HomePage extends AbstractPage {
     }
 
     public WrestlerData abstractWrestler = new WrestlerData("","","","","","","","","","","","","","");
-    public WrestlerData wrestler1 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv","Zaporizka",
-            "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+    public WrestlerData wrestler1 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Volynska","Kyivska",
+            "Dinamo","SK","Joda","Kenobi","FS","Cadet","2016","Recieved");
     public WrestlerData wrestler2 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler3 = new WrestlerData("Loreleja","Francuana","12-05-1991","Maroccana","Volynska",
-            "Kyiv","Dinamo","Kolos","Joda","Palladin","FW","Cadet","2016","Recieved");
-    public WrestlerData wrestler4 = new WrestlerData("Antarktida","Penelopa","12-05-1985","Izabella","Odeska",
-            "Zaporizka","Kolos", "SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler5 = new WrestlerData("Ukrainiana","Karavana","12-05-1993","Banana","Zakarpatska",
-            "Zaporizka","Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+    public WrestlerData wrestler3 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+            "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+    public WrestlerData wrestler4 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+            "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+    public WrestlerData wrestler5 =new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+            "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
 
     String wrestlerFullName1 = wrestler1.lastName + " " + wrestler1.firstName + " " + wrestler1.middleName;
     String wrestlerFullName2 = wrestler2.lastName + " " + wrestler2.firstName + " " + wrestler2.middleName;
@@ -90,7 +91,6 @@ public class HomePage extends AbstractPage {
         buttonCreateNewWrestler.click();
         fillAllFields(wrestler);
         buttonSave.click();
-        System.out.println("Wrestler created");
         waitWhenClickableAndClick(closeProfilePage,7);
     }
 
@@ -99,7 +99,7 @@ public class HomePage extends AbstractPage {
         buttonSearchFor.click();
     }
 
-     private void verifySearchResultWithCodeData() { //TODO Fail. Element not found.Make try catch
+    private void verifySearchResultWithCodeData() { //TODO Fail. Element not found.Make try catch
         assertSearchResultWithCode(wrestlerFIO, wrestlerFullName1, errors);
         assertSearchResultWithCode(wrestlerRegion, wrestler1.regionFirst, errors);
         assertSearchResultWithCode(wrestlerFST, wrestler1.fstFirst, errors);
@@ -147,19 +147,49 @@ public class HomePage extends AbstractPage {
                 + wrestlerFIO.getText(), wrestlerFIO.getText().equals(wrestlerFullName2));
     }
 
-    private void deleteWrestler(String wrestlerFullName) {
+    public void deleteWrestler(String wrestlerFullName) {
         clearAndSendKeys(fieldSearchFor, wrestlerFullName);
         buttonSearchFor.click();
         wrestlerFIO.click();
         deleteWrestler.click();
         deleteСonfirm.click();
-        waitWhenClickableAndClick(fieldSearchFor,7);
-        clearAndSendKeys(fieldSearchFor, wrestlerFullName);
-        buttonSearchFor.click();
-        checkDeletion(wrestlerFIO);
+        if(checkIfExist(wrestlerFullName)){
+            throw new RuntimeException ("Wrestler wasn't deleted!");
+        }
     }
 
-    public void createFewWrestlers() {
+    public void deleteAllMyWrestlers(){
+        deleteAllWrestlersWithThisName(wrestlerFullName1);
+        deleteAllWrestlersWithThisName(wrestlerFullName2);
+        deleteAllWrestlersWithThisName(wrestlerFullName3);
+        deleteAllWrestlersWithThisName(wrestlerFullName4);
+        deleteAllWrestlersWithThisName(wrestlerFullName5);
+    }
+
+    public void deleteAllWrestlersWithThisName(String wrestlerFullName) {
+        if (checkIfExist(wrestlerFullName)) {
+            int size = fio.size();
+            for (int i = 0; i <= size - 1; i++) {
+                deleteWrestler(wrestlerFullName);
+            }
+        }
+    }
+
+    private boolean checkIfExist(String wrestlerFullName) {
+        waitWhenClickableAndClick(fieldSearchFor, 7);
+        clearAndSendKeys(fieldSearchFor, wrestlerFullName);
+        buttonSearchFor.click();
+        try {
+            assertThat("The first row expected contains " + wrestlerFullName + " but was: " + wrestlerFIO.getText(),
+                    wrestlerFIO.getText().equals(wrestlerFullName));
+            return true;
+
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void createFewWrestlersForTestingFilters() {
         createWrestler(wrestler1);
         createWrestler(wrestler2);
         createWrestler(wrestler3);
@@ -168,34 +198,35 @@ public class HomePage extends AbstractPage {
     }
 
     public void useFilters() {
-        clearAndSendKeys(fieldSearchFor,wrestlerFullName5);
+        clearAndSendKeys(fieldSearchFor,wrestlerFullName2);
         buttonSearchFor.click();
-        selectFromDD(filterRegion,wrestler5.regionFirst);
-        selectFromDD(filterFST,wrestler5.fstFirst);
-        selectFromDD(filterLicense,wrestler5.license);
+        selectFromDD(filterRegion,wrestler2.regionFirst);
+        selectFromDD(filterFST,wrestler2.fstFirst);
+        selectFromDD(filterLicense,wrestler2.license);
         selectFromDD(filterPhoto,"No");
-        selectFromDD(filterStyle,wrestler5.style);
-        selectFromDD(filterPages,"25");
+        selectFromDD(filterStyle,wrestler2.style);
+        selectFromDD(filterPages,"50");
     }
 
-    public void checkFilters() {
-        checkFilter(fio, wrestlerFullName5);
-        checkFilter(region, wrestler5.regionFirst);
-        checkFilter(fst, wrestler5.fstFirst);
-        checkFilter(license, wrestler5.license);
+    public void checkAllFilters() {
+        checkFilter(fio, wrestlerFullName2);
+        checkFilter(region, wrestler2.regionFirst);
+        checkFilter(fst, wrestler2.fstFirst);
+        checkFilter(license, wrestler2.license);
         checkFilter(photo, "No");
-        checkFilter(style, wrestler5.style);
-        assertThat("Amount of wrestlers on the page more than filter \"perPage\"!",number.size() <= 25);
-        resetFilters.click();
+        checkFilter(style, wrestler2.style);
+        assertThat("Amount of wrestlers on the page more than filter \"perPage\"!",number.size() <= 50);
+        resetFilters.click(); //TODO org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (292, 106). Other element would receive the click: <div class="col-sm-12 paging">...</div>
     }
 
-    public void deleteWrestlers() {
+    public void deleteWrestlersCreatedForTestingFilters() {
         deleteWrestler(wrestlerFullName1);
         deleteWrestler(wrestlerFullName2);
         deleteWrestler(wrestlerFullName3);
         deleteWrestler(wrestlerFullName4);
         deleteWrestler(wrestlerFullName5);
     }
+
 
 
     //Login block
@@ -348,6 +379,4 @@ public class HomePage extends AbstractPage {
 
     @FindAll(@FindBy(how = How.XPATH, using = "//tr/td[7]"))
     List<WebElement> style;
-
-
 }
