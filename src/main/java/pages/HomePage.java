@@ -23,6 +23,7 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
+    public WrestlerData abstractWrestler = new WrestlerData("","","","","","","","","","","","","","");
     public WrestlerData wrestler1 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
     public WrestlerData wrestler2 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
@@ -68,7 +69,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void fillAllFields(WrestlerData wrestler) {
-        this.wrestler1 = wrestler;
+        this.abstractWrestler = wrestler;
         clearAndSendKeys(fieldLastName, wrestler.lastName);
         clearAndSendKeys(fieldFirstName, wrestler.firstName);
         clearAndSendKeys(fieldDateOfBirth, wrestler.dateOfBirth);
@@ -89,6 +90,7 @@ public class HomePage extends AbstractPage {
         buttonCreateNewWrestler.click();
         fillAllFields(wrestler);
         buttonSave.click();
+        System.out.println("Wrestler created");
         waitWhenClickableAndClick(closeProfilePage,7);
     }
 
@@ -97,36 +99,40 @@ public class HomePage extends AbstractPage {
         buttonSearchFor.click();
     }
 
-    private void verifySearchResultWithCodeData() { //TODO Fail. Element not found.Make try catch
-        assertationProfileDataWithCode0(wrestlerFIO, wrestlerFullName1, errors);
-        assertationProfileDataWithCode0(wrestlerRegion, wrestler1.regionFirst, errors);
-        assertationProfileDataWithCode0(wrestlerFST, wrestler1.fstFirst, errors);
-        assertationProfileDataWithCode0(wrestlerLicense, wrestler1.license, errors);
-        assertationProfileDataWithCode0(wrestlerPhoto, "No", errors);
-        assertationProfileDataWithCode0(wrestlerStyle, wrestler1.style, errors);
-        assertationProfileDataWithCode0(wrestlerChanged, sysDate, errors);
+     private void verifySearchResultWithCodeData() { //TODO Fail. Element not found.Make try catch
+        assertSearchResultWithCode(wrestlerFIO, wrestlerFullName1, errors);
+        assertSearchResultWithCode(wrestlerRegion, wrestler1.regionFirst, errors);
+        assertSearchResultWithCode(wrestlerFST, wrestler1.fstFirst, errors);
+        assertSearchResultWithCode(wrestlerLicense, wrestler1.license, errors);
+        assertSearchResultWithCode(wrestlerPhoto, "No", errors);
+        assertSearchResultWithCode(wrestlerStyle, wrestler1.style, errors);
+        assertSearchResultWithCode(wrestlerChanged, sysDate, errors);
     }
 
     private void verifyProfileDataWithCode(){
         wrestlerFIO.click();
-        assertationProfileDataWithCode2(fieldLastName, wrestler1.lastName, errors);
-        assertationProfileDataWithCode2(fieldFirstName, wrestler1.firstName, errors);
-        assertationProfileDataWithCode2(fieldDateOfBirth, wrestler1.dateOfBirth, errors);
-        assertationProfileDataWithCode2(fieldMiddleName, wrestler1.middleName, errors);
-        assertationProfileDataWithCode(fieldRegion1, wrestler1.regionFirst, errors);
-        assertationProfileDataWithCode(fieldRegion2, wrestler1.regionSecond, errors);
-        assertationProfileDataWithCode(fieldFST1, wrestler1.fstFirst, errors);
-        assertationProfileDataWithCode(fieldFST2, wrestler1.fstSecond, errors);
-        assertationProfileDataWithCode2(fieldTrainer1, wrestler1.trainerFirst, errors);
-        assertationProfileDataWithCode2(fieldTrainer2, wrestler1.trainerSecond, errors);
-        assertationProfileDataWithCode(fieldStyle, wrestler1.style, errors);
-        assertationProfileDataWithCode(fieldAge, wrestler1.age, errors);
-        assertationProfileDataWithCode(fieldYear, wrestler1.license, errors);
-        assertationProfileDataWithCode(fieldCard, wrestler1.card, errors);
+        assertProfileDataWithCode2(fieldLastName, wrestler1.lastName, errors);
+        assertProfileDataWithCode2(fieldFirstName, wrestler1.firstName, errors);
+        assertProfileDataWithCode2(fieldDateOfBirth, wrestler1.dateOfBirth, errors);
+        assertProfileDataWithCode2(fieldMiddleName, wrestler1.middleName, errors);
+        assertProfileDataWithCode(fieldRegion1, wrestler1.regionFirst, errors);
+        assertProfileDataWithCode(fieldRegion2, wrestler1.regionSecond, errors);
+        assertProfileDataWithCode(fieldFST1, wrestler1.fstFirst, errors);
+        assertProfileDataWithCode(fieldFST2, wrestler1.fstSecond, errors);
+        assertProfileDataWithCode2(fieldTrainer1, wrestler1.trainerFirst, errors);
+        assertProfileDataWithCode2(fieldTrainer2, wrestler1.trainerSecond, errors);
+        assertProfileDataWithCode(fieldStyle, wrestler1.style, errors);
+        assertProfileDataWithCode(fieldAge, wrestler1.age, errors);
+        assertProfileDataWithCode(fieldYear, wrestler1.license, errors);
+        assertProfileDataWithCode(fieldCard, wrestler1.card, errors);
         waitWhenClickableAndClick(closeProfilePage,7);
-
-        errors.forEach(System.out::println);
     }
+
+    public void exeptions(){
+        if (errors.size() > 0)
+            errors.forEach(System.out::println);
+            throw new RuntimeException("Some fields are empty!");
+        }
 
     private void updateWrestler() {             //TODO Check updating
         findWrestler(wrestlerFullName1);
@@ -162,22 +168,25 @@ public class HomePage extends AbstractPage {
     }
 
     public void useFilters() {
-        clearAndSendKeys(fieldSearchFor,wrestlerFullName1);
-        selectFromDD(filterRegion,wrestler1.regionFirst);
-        selectFromDD(filterFST,wrestler1.fstFirst);
-        selectFromDD(filterLicense,wrestler1.license);
+        clearAndSendKeys(fieldSearchFor,wrestlerFullName5);
+        buttonSearchFor.click();
+        selectFromDD(filterRegion,wrestler5.regionFirst);
+        selectFromDD(filterFST,wrestler5.fstFirst);
+        selectFromDD(filterLicense,wrestler5.license);
         selectFromDD(filterPhoto,"No");
-        selectFromDD(filterStyle,wrestler1.style);
-        selectFromDD(filterPages,"25");           //TODO Check that list<=25
+        selectFromDD(filterStyle,wrestler5.style);
+        selectFromDD(filterPages,"25");
     }
 
     public void checkFilters() {
-        checkFilter(fio, wrestlerFullName1);
-        checkFilter(region, wrestler1.regionFirst);
-        checkFilter(fst, wrestler1.fstFirst);
-        checkFilter(license, wrestler1.license);
+        checkFilter(fio, wrestlerFullName5);
+        checkFilter(region, wrestler5.regionFirst);
+        checkFilter(fst, wrestler5.fstFirst);
+        checkFilter(license, wrestler5.license);
         checkFilter(photo, "No");
-        checkFilter(style, wrestler1.style);
+        checkFilter(style, wrestler5.style);
+        assertThat("Amount of wrestlers on the page more than filter \"perPage\"!",number.size() <= 25);
+        resetFilters.click();
     }
 
     public void deleteWrestlers() {
@@ -187,6 +196,7 @@ public class HomePage extends AbstractPage {
         deleteWrestler(wrestlerFullName4);
         deleteWrestler(wrestlerFullName5);
     }
+
 
     //Login block
     @FindBy(xpath = "//div/input [1]")
@@ -294,7 +304,7 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//button[2]")
     public WebElement buttonCreateNewWrestler;
 
-    @FindBy(xpath = "///select[@ng-model=\"filters.fregion\"]")
+    @FindBy(xpath = "//select[@ng-model=\"filters.fregion\"]")
     public WebElement filterRegion;
 
     @FindBy(xpath = "//select[@ng-model=\"filters.ffst\"]")
@@ -312,13 +322,13 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//button[@ng-click=\"resetFilters()\"]")
     public WebElement resetFilters;
 
-    @FindBy(xpath = "//button[2]//select[@ng-model=\"perPage\"]")
+    @FindBy(xpath = "//select[@ng-model=\"perPage\"]")
     public WebElement filterPages;
 
 
 
     //Lists for search result
-    @FindAll(@FindBy(how = How.XPATH, using = "//tr/td[2]"))
+    @FindAll(@FindBy(how = How.XPATH, using = "//tr/td[1]"))
     List<WebElement> number;
 
     @FindAll(@FindBy(how = How.XPATH, using = "//tr/td[2]"))
@@ -338,4 +348,6 @@ public class HomePage extends AbstractPage {
 
     @FindAll(@FindBy(how = How.XPATH, using = "//tr/td[7]"))
     List<WebElement> style;
+
+
 }

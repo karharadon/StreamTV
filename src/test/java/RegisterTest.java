@@ -11,14 +11,15 @@ public class RegisterTest extends BaseTest {
     public void CRUD(){
         homePage.login(driver);
         homePage.wrestlerCRUD();
+        //homePage.exeptions();
     }
 
     @Test
     public void Filters(){
         homePage.login(driver);
         homePage.createFewWrestlers();
-        //homePage.useFilters();
-        //homePage.checkFilters();
+        homePage.useFilters();
+        homePage.checkFilters();
         homePage.deleteWrestlers();
     }
-}
+  }

@@ -26,12 +26,12 @@ public abstract class AbstractPage {
         this.driver = driver;
     }
 
-    public void clearAndSendKeys(WebElement webElement, String text){
+    public void clearAndSendKeys(WebElement webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);
     }
 
-    public void waitWhenClickableAndClick(WebElement element, int timeSec){
+    public void waitWhenClickableAndClick(WebElement element, int timeSec) {
         (new WebDriverWait(driver, timeSec)).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
@@ -41,7 +41,7 @@ public abstract class AbstractPage {
         select.selectByVisibleText(text);
     }
 
-    public String getComboboxElement (WebElement webElement) {
+    public String getComboboxElement(WebElement webElement) {
         Select comboBox = new Select(webElement);
         return comboBox.getFirstSelectedOption().getText();
     }
@@ -50,19 +50,19 @@ public abstract class AbstractPage {
         ExpectedCondition<Boolean> pageLoadCondition = new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
                     }
                 };
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(pageLoadCondition);
     }
 
-    public void captureScreen(String fileName){
+    public void captureScreen(String fileName) {
         ScreenShot screenShot = new ScreenShot(driver);
         screenShot.captureScreen(fileName);
     }
 
-    protected void assertationProfileDataWithCode0(WebElement fact, String expected, ArrayList<String> err) {
+    protected void assertSearchResultWithCode(WebElement fact, String expected, ArrayList<String> err) {
         try {
             assert (fact.getText().equals(expected));
         } catch (AssertionError e) {
@@ -71,7 +71,7 @@ public abstract class AbstractPage {
         }
     }
 
-    protected void assertationProfileDataWithCode(WebElement fact, String expected, ArrayList<String> err) {
+    protected void assertProfileDataWithCode(WebElement fact, String expected, ArrayList<String> err) {
         try {
             assert (getComboboxElement(fact).equals(expected));
         } catch (AssertionError e) {
@@ -80,7 +80,7 @@ public abstract class AbstractPage {
         }
     }
 
-    protected void assertationProfileDataWithCode2(WebElement fact, String expected, ArrayList<String> err) {
+    protected void assertProfileDataWithCode2(WebElement fact, String expected, ArrayList<String> err) {
         try {
             assert (fact.getAttribute("value").equals(expected));
         } catch (AssertionError e) {
@@ -88,13 +88,14 @@ public abstract class AbstractPage {
                     + " but was: " + fact.getAttribute("value"));
         }
     }
-    protected void checkDeletion(WebElement element ) {
-        try{
+
+    protected void checkDeletion(WebElement element) {
+        try {
             assertThat("The first row expected contains \"NULL\" but was: " + element.getText(),
                     element.getText().equals(null));
         } catch (NoSuchElementException e) {
 
-        } catch (Exception b){
+        } catch (Exception b) {
             //TODO Add to log
             captureScreen(className);
             b.printStackTrace();
@@ -102,10 +103,13 @@ public abstract class AbstractPage {
         }
     }
 
-    public void checkFilter(List<WebElement> list, String filter){
-        for (int i = 0; list.size()-1 >= 0; i++){
-            assertThat("The field " + filter + " expected "+ filter +"but was: " + list.get(i).getAttribute("value"),
-                    list.get(i).getAttribute("value").equals(filter));
+    public void checkFilter(List<WebElement> list, String filter) {
+        for (int i = 0; i <= list.size()-1; i++) {
+            assertThat("The field " + filter + " expected "+ filter +"but was: " + list.get(i).getText(),
+            list.get(i).getText().equals(filter));
         }
     }
+
+
+
 }
