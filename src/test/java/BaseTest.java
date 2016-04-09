@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
+import pages.HomePage;
 
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +16,7 @@ public abstract class BaseTest {
     public static WebDriver driver;
 
     protected String browser = ConfigProperties.getProperty("browser");
+    HomePage homePage = PageFactory.initElements(getWebDriver(), HomePage.class);
 
 
     public WebDriver getWebDriver() {
@@ -31,9 +34,8 @@ public abstract class BaseTest {
     }
 
    //@AfterMethod
-    public void tearDown() {
-    driver.close();
+    public void deleteWrestlersAndTearDown() {
+       homePage.deleteAllMyWrestlers();
+       driver.close();
     }
-
-
 }

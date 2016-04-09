@@ -24,11 +24,10 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
-    public WrestlerData abstractWrestler = new WrestlerData("","","","","","","","","","","","","","");
     public WrestlerData wrestler1 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Volynska","Kyivska",
             "Dinamo","SK","Joda","Kenobi","FS","Cadet","2016","Recieved");
     public WrestlerData wrestler2 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
-            "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
+            "Kolos","MON","ObiVan","DartaMol","GR","Senior","2017","Produced");
     public WrestlerData wrestler3 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
     public WrestlerData wrestler4 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
@@ -36,8 +35,8 @@ public class HomePage extends AbstractPage {
     public WrestlerData wrestler5 =new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
 
-    String wrestlerFullName1 = wrestler1.lastName + " " + wrestler1.firstName + " " + wrestler1.middleName;
-    String wrestlerFullName2 = wrestler2.lastName + " " + wrestler2.firstName + " " + wrestler2.middleName;
+    public String wrestlerFullName1 = wrestler1.lastName + " " + wrestler1.firstName + " " + wrestler1.middleName;
+    public String wrestlerFullName2 = wrestler2.lastName + " " + wrestler2.firstName + " " + wrestler2.middleName;
     String wrestlerFullName3 = wrestler3.lastName + " " + wrestler3.firstName + " " + wrestler3.middleName;
     String wrestlerFullName4 = wrestler4.lastName + " " + wrestler4.firstName + " " + wrestler4.middleName;
     String wrestlerFullName5 = wrestler5.lastName + " " + wrestler5.firstName + " " + wrestler5.middleName;
@@ -60,17 +59,14 @@ public class HomePage extends AbstractPage {
         waitForPageLoad(driver);
     }
 
-    public void wrestlerCRUD() {
-        createWrestler(wrestler1);
-        findWrestler(wrestlerFullName1);
-        verifySearchResultWithCodeData();
-        verifyProfileDataWithCode();
-        updateWrestler();
-        deleteWrestler(wrestlerFullName2);
+    public void createWrestler(WrestlerData wrestler){
+        buttonCreateNewWrestler.click();
+        fillAllFields(wrestler);
+        buttonSave.click();
+        waitWhenClickableAndClick(closeProfilePage,7);
     }
 
     public void fillAllFields(WrestlerData wrestler) {
-        this.abstractWrestler = wrestler;
         clearAndSendKeys(fieldLastName, wrestler.lastName);
         clearAndSendKeys(fieldFirstName, wrestler.firstName);
         clearAndSendKeys(fieldDateOfBirth, wrestler.dateOfBirth);
@@ -87,64 +83,52 @@ public class HomePage extends AbstractPage {
         selectFromDD(fieldCard, wrestler.card);
     }
 
-    public void createWrestler(WrestlerData wrestler){
-        buttonCreateNewWrestler.click();
-        fillAllFields(wrestler);
-        buttonSave.click();
-        waitWhenClickableAndClick(closeProfilePage,7);
-    }
-
-    private void findWrestler(String wrestlerFullName) {  //TODO choose last created wrestler, check deletion with last
+    public void findWrestler(String wrestlerFullName) {  //TODO choose last created wrestler, check deletion with last
         clearAndSendKeys(fieldSearchFor, wrestlerFullName);
         buttonSearchFor.click();
     }
 
-    private void verifySearchResultWithCodeData() { //TODO Fail. Element not found.Make try catch
-        assertSearchResultWithCode(wrestlerFIO, wrestlerFullName1, errors);
-        assertSearchResultWithCode(wrestlerRegion, wrestler1.regionFirst, errors);
-        assertSearchResultWithCode(wrestlerFST, wrestler1.fstFirst, errors);
-        assertSearchResultWithCode(wrestlerLicense, wrestler1.license, errors);
+    public void verifySearchResultWithCode(WrestlerData wrestler, String wrestlerFullName) { //TODO Fail. Element not found.Make try catch
+        assertSearchResultWithCode(wrestlerFIO, wrestlerFullName, errors);
+        assertSearchResultWithCode(wrestlerRegion, wrestler.regionFirst, errors);
+        assertSearchResultWithCode(wrestlerFST, wrestler.fstFirst, errors);
+        assertSearchResultWithCode(wrestlerLicense, wrestler.license, errors);
         assertSearchResultWithCode(wrestlerPhoto, "No", errors);
-        assertSearchResultWithCode(wrestlerStyle, wrestler1.style, errors);
+        assertSearchResultWithCode(wrestlerStyle, wrestler.style, errors);
         assertSearchResultWithCode(wrestlerChanged, sysDate, errors);
     }
 
-    private void verifyProfileDataWithCode(){
+    public void verifyProfileDataWithCode(WrestlerData wrestler){
         wrestlerFIO.click();
-        assertProfileDataWithCode2(fieldLastName, wrestler1.lastName, errors);
-        assertProfileDataWithCode2(fieldFirstName, wrestler1.firstName, errors);
-        assertProfileDataWithCode2(fieldDateOfBirth, wrestler1.dateOfBirth, errors);
-        assertProfileDataWithCode2(fieldMiddleName, wrestler1.middleName, errors);
-        assertProfileDataWithCode(fieldRegion1, wrestler1.regionFirst, errors);
-        assertProfileDataWithCode(fieldRegion2, wrestler1.regionSecond, errors);
-        assertProfileDataWithCode(fieldFST1, wrestler1.fstFirst, errors);
-        assertProfileDataWithCode(fieldFST2, wrestler1.fstSecond, errors);
-        assertProfileDataWithCode2(fieldTrainer1, wrestler1.trainerFirst, errors);
-        assertProfileDataWithCode2(fieldTrainer2, wrestler1.trainerSecond, errors);
-        assertProfileDataWithCode(fieldStyle, wrestler1.style, errors);
-        assertProfileDataWithCode(fieldAge, wrestler1.age, errors);
-        assertProfileDataWithCode(fieldYear, wrestler1.license, errors);
-        assertProfileDataWithCode(fieldCard, wrestler1.card, errors);
+        assertProfileDataWithCode2(fieldLastName, wrestler.lastName, errors);
+        assertProfileDataWithCode2(fieldFirstName, wrestler.firstName, errors);
+        assertProfileDataWithCode2(fieldDateOfBirth, wrestler.dateOfBirth, errors);
+        assertProfileDataWithCode2(fieldMiddleName, wrestler.middleName, errors);
+        assertProfileDataWithCode(fieldRegion1, wrestler.regionFirst, errors);
+        assertProfileDataWithCode(fieldRegion2, wrestler.regionSecond, errors);
+        assertProfileDataWithCode(fieldFST1, wrestler.fstFirst, errors);
+        assertProfileDataWithCode(fieldFST2, wrestler.fstSecond, errors);
+        assertProfileDataWithCode2(fieldTrainer1, wrestler.trainerFirst, errors);
+        assertProfileDataWithCode2(fieldTrainer2, wrestler.trainerSecond, errors);
+        assertProfileDataWithCode(fieldStyle, wrestler.style, errors);
+        assertProfileDataWithCode(fieldAge, wrestler.age, errors);
+        assertProfileDataWithCode(fieldYear, wrestler.license, errors);
+        assertProfileDataWithCode(fieldCard, wrestler.card, errors);
         waitWhenClickableAndClick(closeProfilePage,7);
     }
 
-    public void exeptions(){
+    public void checkExeptions(){
         if (errors.size() > 0)
             errors.forEach(System.out::println);
-            throw new RuntimeException("Some fields are empty!");
+            throw new RuntimeException("Some fields contain wrong data!");
         }
 
-    private void updateWrestler() {             //TODO Check updating
+    public void updateWrestler() {
         findWrestler(wrestlerFullName1);
         wrestlerFIO.click();
         fillAllFields(wrestler2);
         buttonSave.click();
         waitWhenClickableAndClick(closeProfilePage,7);
-        waitWhenClickableAndClick(wrestlerPage,7);
-        findWrestler(wrestlerFullName2);
-
-        assertThat("After update the first row expected contains " + wrestlerFullName2 + " but was: "
-                + wrestlerFIO.getText(), wrestlerFIO.getText().equals(wrestlerFullName2));
     }
 
     public void deleteWrestler(String wrestlerFullName) {
@@ -153,25 +137,25 @@ public class HomePage extends AbstractPage {
         wrestlerFIO.click();
         deleteWrestler.click();
         deleteСonfirm.click();
-        if(checkIfExist(wrestlerFullName)){
-            throw new RuntimeException ("Wrestler wasn't deleted!");
+    }
+
+    public void checkDeletion(String wrestlerFullName) {
+        if (checkIfExist(wrestlerFullName)) {
+            throw new RuntimeException("Wrestler wasn't deleted or exist wrestlers with a same name!");
         }
     }
 
     public void deleteAllMyWrestlers(){
-        deleteAllWrestlersWithThisName(wrestlerFullName1);
-        deleteAllWrestlersWithThisName(wrestlerFullName2);
-        deleteAllWrestlersWithThisName(wrestlerFullName3);
-        deleteAllWrestlersWithThisName(wrestlerFullName4);
-        deleteAllWrestlersWithThisName(wrestlerFullName5);
+        deleteWrestlerWithThisName(wrestlerFullName1);
+        deleteWrestlerWithThisName(wrestlerFullName2);
+        deleteWrestlerWithThisName(wrestlerFullName3);
+        deleteWrestlerWithThisName(wrestlerFullName4);
+        deleteWrestlerWithThisName(wrestlerFullName5);
     }
 
-    public void deleteAllWrestlersWithThisName(String wrestlerFullName) {
+    public void deleteWrestlerWithThisName(String wrestlerFullName) {
         if (checkIfExist(wrestlerFullName)) {
-            int size = fio.size();
-            for (int i = 0; i <= size - 1; i++) {
-                deleteWrestler(wrestlerFullName);
-            }
+            deleteWrestler(wrestlerFullName);
         }
     }
 
@@ -195,6 +179,38 @@ public class HomePage extends AbstractPage {
         createWrestler(wrestler3);
         createWrestler(wrestler4);
         createWrestler(wrestler5);
+    }
+
+    public void useAndCheckDifferentFilters() {
+        filterCombination1();
+        checkfilterCombination1();
+        filterCombination2();
+        checkfilterCombination2();
+        filterCombination3();
+        checkfilterCombination3();
+    }
+
+    private void filterCombination1() {
+
+    }
+
+    private void checkfilterCombination1() {
+
+    }
+
+    private void filterCombination2() {
+
+    }
+
+    private void checkfilterCombination2() {
+
+    }
+
+    private void filterCombination3() {
+
+    }
+
+    private void checkfilterCombination3() {
     }
 
     public void useFilters() {

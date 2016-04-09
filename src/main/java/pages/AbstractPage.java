@@ -66,7 +66,7 @@ public abstract class AbstractPage {
         try {
             assert (fact.getText().equals(expected));
         } catch (AssertionError e) {
-            err.add("The field " + " expected contains " + expected
+            err.add("After search result the field " + " expected contains " + expected
                     + " but was: " + fact.getText());
         }
     }
@@ -75,7 +75,7 @@ public abstract class AbstractPage {
         try {
             assert (getComboboxElement(fact).equals(expected));
         } catch (AssertionError e) {
-            err.add("The field " + " expected contains " + expected
+            err.add("On the profile page the field " + " expected contains " + expected
                     + " but was: " + getComboboxElement(fact));
         }
     }
@@ -84,7 +84,7 @@ public abstract class AbstractPage {
         try {
             assert (fact.getAttribute("value").equals(expected));
         } catch (AssertionError e) {
-            err.add("The field " + " expected contains " + expected
+            err.add("On the profile page the field" + " expected contains " + expected
                     + " but was: " + fact.getAttribute("value"));
         }
     }
