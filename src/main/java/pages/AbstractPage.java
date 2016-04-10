@@ -80,11 +80,11 @@ public abstract class AbstractPage {
         }
     }
 
-    protected void assertProfileDataWithCode2(WebElement fact, String expected, ArrayList<String> err) {
+    protected void assertProfileDataWithCode2(WebElement fact, String expected, ArrayList<String> errors) {
         try {
             assert (fact.getAttribute("value").equals(expected));
         } catch (AssertionError e) {
-            err.add("On the profile page the field" + " expected contains " + expected
+            errors.add("On the profile page the field" + " expected contains " + expected
                     + " but was: " + fact.getAttribute("value"));
         }
     }

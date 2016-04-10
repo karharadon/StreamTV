@@ -24,28 +24,29 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
-    public WrestlerData wrestler1 = new WrestlerData("Britana","Indiana","12-05-1979","Kanadiana","Volynska","Kyivska",
+    public WrestlerData wrestler1 = new WrestlerData("Lana","Rey","12-05-1979","Del","Volynska","Kyivska",
             "Dinamo","SK","Joda","Kenobi","FS","Cadet","2016","Recieved");
-    public WrestlerData wrestler2 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+    public WrestlerData wrestler2 = new WrestlerData("Iogan","Mozart","12-05-1989","Amadei","Kyiv","Zaporizka",
             "Kolos","MON","ObiVan","DartaMol","GR","Senior","2017","Produced");
-    public WrestlerData wrestler3 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+    public WrestlerData wrestler3 = new WrestlerData("Nautilius","Pompilius","12-05-1989","Karavana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler4 = new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+    public WrestlerData wrestler4 = new WrestlerData("Zigmund","Freid","12-05-1989","Petrovich","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler5 =new WrestlerData("Karolina","Italiana","12-05-1989","Karavana","Kyiv","Zaporizka",
+    public WrestlerData wrestler5 =new WrestlerData("Jaroslav","Mudryj","12-05-1989","Knjaz","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
 
     public String wrestlerFullName1 = wrestler1.lastName + " " + wrestler1.firstName + " " + wrestler1.middleName;
     public String wrestlerFullName2 = wrestler2.lastName + " " + wrestler2.firstName + " " + wrestler2.middleName;
-    String wrestlerFullName3 = wrestler3.lastName + " " + wrestler3.firstName + " " + wrestler3.middleName;
-    String wrestlerFullName4 = wrestler4.lastName + " " + wrestler4.firstName + " " + wrestler4.middleName;
-    String wrestlerFullName5 = wrestler5.lastName + " " + wrestler5.firstName + " " + wrestler5.middleName;
+    public String wrestlerFullName3 = wrestler3.lastName + " " + wrestler3.firstName + " " + wrestler3.middleName;
+    public String wrestlerFullName4 = wrestler4.lastName + " " + wrestler4.firstName + " " + wrestler4.middleName;
+    public String wrestlerFullName5 = wrestler5.lastName + " " + wrestler5.firstName + " " + wrestler5.middleName;
 
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private Date today = Calendar.getInstance().getTime();
     private String sysDate = dateFormat.format(today);
 
-    ArrayList<String> errors = new ArrayList<>();
+    public ArrayList<String> errorsAfterCreating = new ArrayList<>();
+    public ArrayList<String> errorsAfterUpdating = new ArrayList<>();
 
     public void login(WebDriver driver) {
         open(driver);
@@ -88,7 +89,7 @@ public class HomePage extends AbstractPage {
         buttonSearchFor.click();
     }
 
-    public void verifySearchResultWithCode(WrestlerData wrestler, String wrestlerFullName) { //TODO Fail. Element not found.Make try catch
+    public void verifySearchResultWithCode(WrestlerData wrestler, String wrestlerFullName,ArrayList errors) { //TODO Fail. Element not found.Make try catch
         assertSearchResultWithCode(wrestlerFIO, wrestlerFullName, errors);
         assertSearchResultWithCode(wrestlerRegion, wrestler.regionFirst, errors);
         assertSearchResultWithCode(wrestlerFST, wrestler.fstFirst, errors);
@@ -98,7 +99,7 @@ public class HomePage extends AbstractPage {
         assertSearchResultWithCode(wrestlerChanged, sysDate, errors);
     }
 
-    public void verifyProfileDataWithCode(WrestlerData wrestler){
+    public void verifyProfileDataWithCode(WrestlerData wrestler, ArrayList errors){
         wrestlerFIO.click();
         assertProfileDataWithCode2(fieldLastName, wrestler.lastName, errors);
         assertProfileDataWithCode2(fieldFirstName, wrestler.firstName, errors);
@@ -117,7 +118,7 @@ public class HomePage extends AbstractPage {
         waitWhenClickableAndClick(closeProfilePage,7);
     }
 
-    public void checkExeptions(){
+    public void checkExeptions(ArrayList errors){
         if (errors.size() > 0)
             errors.forEach(System.out::println);
             throw new RuntimeException("Some fields contain wrong data!");
@@ -132,7 +133,8 @@ public class HomePage extends AbstractPage {
     }
 
     public void deleteWrestler(String wrestlerFullName) {
-        clearAndSendKeys(fieldSearchFor, wrestlerFullName);
+        clearAndSendKeys(fieldSearchFor, wrestlerFullName);// TODO org.openqa.selenium.InvalidElementStateException:
+        // invalid element state: Element is not currently interactable and may not be manipulated
         buttonSearchFor.click();
         wrestlerFIO.click();
         deleteWrestler.click();

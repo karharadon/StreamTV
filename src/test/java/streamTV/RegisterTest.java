@@ -18,10 +18,10 @@ public class RegisterTest extends BaseTest {
         homePage.login(driver);
         homePage.createWrestler(homePage.wrestler1);
         homePage.findWrestler(homePage.wrestlerFullName1);
-        homePage.verifySearchResultWithCode(homePage.wrestler1, homePage.wrestlerFullName1);
-        homePage.verifyProfileDataWithCode(homePage.wrestler1);
+        homePage.verifySearchResultWithCode(homePage.wrestler1,homePage.wrestlerFullName1,homePage.errorsAfterCreating);
+        homePage.verifyProfileDataWithCode(homePage.wrestler1, homePage.errorsAfterCreating);
         homePage.deleteWrestler(homePage.wrestlerFullName1);
-        homePage.checkExeptions();
+        homePage.checkExeptions(homePage.errorsAfterCreating);
     }
 
     @Test
@@ -30,10 +30,10 @@ public class RegisterTest extends BaseTest {
         homePage.createWrestler(homePage.wrestler1);
         homePage.updateWrestler();
         homePage.findWrestler(homePage.wrestlerFullName2);
-        homePage.verifySearchResultWithCode(homePage.wrestler2, homePage.wrestlerFullName2);
-        homePage.verifyProfileDataWithCode(homePage.wrestler2);
+        homePage.verifySearchResultWithCode(homePage.wrestler2,homePage.wrestlerFullName2,homePage.errorsAfterUpdating);
+        homePage.verifyProfileDataWithCode(homePage.wrestler2,homePage.errorsAfterUpdating);
         homePage.deleteWrestler(homePage.wrestlerFullName2);
-        homePage.checkExeptions();
+        homePage.checkExeptions(homePage.errorsAfterUpdating);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class RegisterTest extends BaseTest {
     }
 
 
-    @Test
+    //@Test
     public void Filtersssss(){
         homePage.login(driver);
         homePage.createFewWrestlersForTestingFilters();
