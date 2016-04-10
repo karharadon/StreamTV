@@ -1,7 +1,6 @@
 package streamTV;
 
 import org.testng.annotations.Test;
-import streamTV.BaseTest;
 
 public class RegisterTest extends BaseTest {
 
