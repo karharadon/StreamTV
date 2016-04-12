@@ -1,4 +1,4 @@
-package helper;
+package lastochkin.streamTV.helper;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

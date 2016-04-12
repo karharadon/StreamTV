@@ -1,7 +1,8 @@
-package pages;
+package lastochkin.streamTV.pages;
 
-import data.WrestlerData;
+import lastochkin.streamTV.data.WrestlerData;
 import helper.ConfigProperties;
+import lastochkin.streamTV.pages.AbstractPage;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

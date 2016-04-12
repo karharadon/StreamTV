@@ -1,4 +1,4 @@
-package data;
+package lastochkin.streamTV.data;
 
 public class WrestlerData {
 

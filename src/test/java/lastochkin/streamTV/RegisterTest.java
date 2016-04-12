@@ -1,4 +1,4 @@
-package streamTV;
+package lastochkin.streamTV;
 
 import org.testng.annotations.Test;
 

@@ -1,10 +1,7 @@
-package pages;
+package lastochkin.streamTV.pages;
 
-import data.WrestlerData;
 import helper.ScreenShot;
-import org.omg.CORBA.Object;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;

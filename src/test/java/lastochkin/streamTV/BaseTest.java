@@ -1,13 +1,12 @@
-package streamTV;
+package lastochkin.streamTV;
 
-import helper.ConfigProperties;
+import lastochkin.streamTV.helper.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import pages.HomePage;
+import lastochkin.streamTV.pages.HomePage;
 
 
 import java.util.concurrent.TimeUnit;
