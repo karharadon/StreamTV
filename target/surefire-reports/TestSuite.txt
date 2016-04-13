@@ -1,75 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 293.57 sec <<< FAILURE!
-Filters(streamTV.RegisterTest)  Time elapsed: 83.994 sec  <<< FAILURE!
-org.openqa.selenium.InvalidElementStateException: invalid element state: Element is not currently interactable and may not be manipulated
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 478 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
-System info: host: 'karhamint-VirtualBox', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '3.19.0-32-generic', java.version: '1.8.0_72'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:140)
-	at sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at com.sun.proxy.$Proxy3.clear(Unknown Source)
-	at pages.AbstractPage.clearAndSendKeys(AbstractPage.java:30)
-	at pages.HomePage.deleteWrestler(HomePage.java:135)
-	at pages.HomePage.deleteWrestlersCreatedForTestingFilters(HomePage.java:240)
-	at streamTV.RegisterTest.Filters(RegisterTest.java:44)
-
-Filtersssss(streamTV.RegisterTest)  Time elapsed: 92.37 sec  <<< FAILURE!
-org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (397, 106). Other element would receive the click: <div class="col-sm-12 paging">...</div>
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 188 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
-System info: host: 'karhamint-VirtualBox', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '3.19.0-32-generic', java.version: '1.8.0_72'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
-	at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at com.sun.proxy.$Proxy3.click(Unknown Source)
-	at pages.HomePage.checkAllFilters(HomePage.java:235)
-	at streamTV.RegisterTest.Filtersssss(RegisterTest.java:53)
-
-createAndDelete(streamTV.RegisterTest)  Time elapsed: 27.13 sec  <<< FAILURE!
-java.lang.RuntimeException: Wrestler wasn't deleted or exist wrestlers with a same name!
-	at pages.HomePage.checkDeletion(HomePage.java:144)
-	at streamTV.RegisterTest.createAndDelete(RegisterTest.java:13)
-
-createAndVerify(streamTV.RegisterTest)  Time elapsed: 32.17 sec  <<< FAILURE!
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 284.523 sec <<< FAILURE!
+createAndVerify(lastochkin.streamTV.RegisterTest)  Time elapsed: 44.306 sec  <<< FAILURE!
 java.lang.RuntimeException: Some fields contain wrong data!
-	at pages.HomePage.checkExeptions(HomePage.java:123)
-	at streamTV.RegisterTest.createAndVerify(RegisterTest.java:24)
+	at lastochkin.streamTV.pages.HomePage.checkExeptions(HomePage.java:124)
+	at lastochkin.streamTV.RegisterTest.createAndVerify(RegisterTest.java:24)
 
-updateAndVerify(streamTV.RegisterTest)  Time elapsed: 46.944 sec  <<< FAILURE!
+updateAndVerify(lastochkin.streamTV.RegisterTest)  Time elapsed: 77.648 sec  <<< FAILURE!
 java.lang.RuntimeException: Some fields contain wrong data!
-	at pages.HomePage.checkExeptions(HomePage.java:123)
-	at streamTV.RegisterTest.updateAndVerify(RegisterTest.java:36)
+	at lastochkin.streamTV.pages.HomePage.checkExeptions(HomePage.java:124)
+	at lastochkin.streamTV.RegisterTest.updateAndVerify(RegisterTest.java:36)
 

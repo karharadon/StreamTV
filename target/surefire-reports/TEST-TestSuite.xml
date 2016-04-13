@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="5" name="TestSuite" time="293.537" errors="0" skipped="0">
+<testsuite tests="4" failures="2" name="TestSuite" time="284.503" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/karhamint/Projects/TestStreamTV"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="/tmp/surefirebooter1163905224288124291.jar"/>
+    <property name="surefire.real.class.path" value="/tmp/surefirebooter6508681329827678551.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -27,7 +27,7 @@
     <property name="os.name" value="Linux"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
-    <property name="surefire.test.class.path" value="/home/karhamint/Projects/TestStreamTV/target/test-classes:/home/karhamint/Projects/TestStreamTV/target/classes:/root/.m2/repository/org/seleniumhq/selenium/selenium-java/2.53.0/selenium-java-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/2.53.0/selenium-chrome-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/2.53.0/selenium-remote-driver-2.53.0.jar:/root/.m2/repository/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar:/root/.m2/repository/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-api/2.53.0/selenium-api-2.53.0.jar:/root/.m2/repository/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar:/root/.m2/repository/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar:/root/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/root/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/root/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/2.53.0/selenium-edge-driver-2.53.0.jar:/root/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/root/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/2.53.0/selenium-firefox-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/2.53.0/selenium-ie-driver-2.53.0.jar:/root/.m2/repository/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/2.53.0/selenium-safari-driver-2.53.0.jar:/root/.m2/repository/io/netty/netty/3.5.7.Final/netty-3.5.7.Final.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-support/2.53.0/selenium-support-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-leg-rc/2.53.0/selenium-leg-rc-2.53.0.jar:/root/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/root/.m2/repository/org/testng/testng/6.8.17/testng-6.8.17.jar:/root/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/root/.m2/repository/com/beust/jcommander/1.27/jcommander-1.27.jar:/root/.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar:"/>
+    <property name="surefire.test.class.path" value="/home/karhamint/Projects/TestStreamTV/target/test-classes:/home/karhamint/Projects/TestStreamTV/target/classes:/root/.m2/repository/org/seleniumhq/selenium/selenium-java/2.53.0/selenium-java-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/2.53.0/selenium-chrome-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/2.53.0/selenium-remote-driver-2.53.0.jar:/root/.m2/repository/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar:/root/.m2/repository/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-api/2.53.0/selenium-api-2.53.0.jar:/root/.m2/repository/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar:/root/.m2/repository/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar:/root/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/root/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/root/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/2.53.0/selenium-edge-driver-2.53.0.jar:/root/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/root/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/2.53.0/selenium-firefox-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/2.53.0/selenium-ie-driver-2.53.0.jar:/root/.m2/repository/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/2.53.0/selenium-safari-driver-2.53.0.jar:/root/.m2/repository/io/netty/netty/3.5.7.Final/netty-3.5.7.Final.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-support/2.53.0/selenium-support-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-leg-rc/2.53.0/selenium-leg-rc-2.53.0.jar:/root/.m2/repository/org/testng/testng/6.8.17/testng-6.8.17.jar:/root/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/root/.m2/repository/com/beust/jcommander/1.27/jcommander-1.27.jar:/root/.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar:"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -38,11 +38,11 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="user.name" value="root"/>
-    <property name="java.class.path" value="/home/karhamint/Projects/TestStreamTV/target/test-classes:/home/karhamint/Projects/TestStreamTV/target/classes:/root/.m2/repository/org/seleniumhq/selenium/selenium-java/2.53.0/selenium-java-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/2.53.0/selenium-chrome-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/2.53.0/selenium-remote-driver-2.53.0.jar:/root/.m2/repository/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar:/root/.m2/repository/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-api/2.53.0/selenium-api-2.53.0.jar:/root/.m2/repository/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar:/root/.m2/repository/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar:/root/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/root/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/root/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/2.53.0/selenium-edge-driver-2.53.0.jar:/root/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/root/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/2.53.0/selenium-firefox-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/2.53.0/selenium-ie-driver-2.53.0.jar:/root/.m2/repository/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/2.53.0/selenium-safari-driver-2.53.0.jar:/root/.m2/repository/io/netty/netty/3.5.7.Final/netty-3.5.7.Final.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-support/2.53.0/selenium-support-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-leg-rc/2.53.0/selenium-leg-rc-2.53.0.jar:/root/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/root/.m2/repository/org/testng/testng/6.8.17/testng-6.8.17.jar:/root/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/root/.m2/repository/com/beust/jcommander/1.27/jcommander-1.27.jar:/root/.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar:"/>
+    <property name="java.class.path" value="/home/karhamint/Projects/TestStreamTV/target/test-classes:/home/karhamint/Projects/TestStreamTV/target/classes:/root/.m2/repository/org/seleniumhq/selenium/selenium-java/2.53.0/selenium-java-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/2.53.0/selenium-chrome-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/2.53.0/selenium-remote-driver-2.53.0.jar:/root/.m2/repository/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar:/root/.m2/repository/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-api/2.53.0/selenium-api-2.53.0.jar:/root/.m2/repository/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar:/root/.m2/repository/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar:/root/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/root/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/root/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/2.53.0/selenium-edge-driver-2.53.0.jar:/root/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/root/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/2.53.0/selenium-firefox-driver-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/2.53.0/selenium-ie-driver-2.53.0.jar:/root/.m2/repository/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar:/root/.m2/repository/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/2.53.0/selenium-safari-driver-2.53.0.jar:/root/.m2/repository/io/netty/netty/3.5.7.Final/netty-3.5.7.Final.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-support/2.53.0/selenium-support-2.53.0.jar:/root/.m2/repository/org/seleniumhq/selenium/selenium-leg-rc/2.53.0/selenium-leg-rc-2.53.0.jar:/root/.m2/repository/org/testng/testng/6.8.17/testng-6.8.17.jar:/root/.m2/repository/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar:/root/.m2/repository/com/beust/jcommander/1.27/jcommander-1.27.jar:/root/.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar:"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="/tmp/surefirebooter1163905224288124291.jar /tmp/surefire8115149985969854020tmp /tmp/surefire5867522212400804203tmp"/>
+    <property name="sun.java.command" value="/tmp/surefirebooter6508681329827678551.jar /tmp/surefire3057083140270964672tmp /tmp/surefire8470689185232158079tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="uk"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,90 +59,12 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="streamTV.RegisterTest" name="Filters" time="83.879">
-    <failure message="invalid element state: Element is not currently interactable and may not be manipulated
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 478 milliseconds
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
-System info: host: &apos;karhamint-VirtualBox&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-32-generic&apos;, java.version: &apos;1.8.0_72&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6" type="org.openqa.selenium.InvalidElementStateException">org.openqa.selenium.InvalidElementStateException: invalid element state: Element is not currently interactable and may not be manipulated
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 478 milliseconds
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
-System info: host: &apos;karhamint-VirtualBox&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-32-generic&apos;, java.version: &apos;1.8.0_72&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:140)
-	at sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at com.sun.proxy.$Proxy3.clear(Unknown Source)
-	at pages.AbstractPage.clearAndSendKeys(AbstractPage.java:30)
-	at pages.HomePage.deleteWrestler(HomePage.java:135)
-	at pages.HomePage.deleteWrestlersCreatedForTestingFilters(HomePage.java:240)
-	at streamTV.RegisterTest.Filters(RegisterTest.java:44)
-</failure>
-  </testcase>
-  <testcase classname="streamTV.RegisterTest" name="Filtersssss" time="92.367">
-    <failure message="unknown error: Element is not clickable at point (397, 106). Other element would receive the click: &lt;div class=&quot;col-sm-12 paging&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 188 milliseconds
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
-System info: host: &apos;karhamint-VirtualBox&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-32-generic&apos;, java.version: &apos;1.8.0_72&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6" type="org.openqa.selenium.WebDriverException">org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (397, 106). Other element would receive the click: &lt;div class=&quot;col-sm-12 paging&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=48.0.2564.103)
-  (Driver info: chromedriver=2.20.353124 (035346203162d32c80f1dce587c8154a1efa0c3b),platform=Linux 3.19.0-32-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 188 milliseconds
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;
-System info: host: &apos;karhamint-VirtualBox&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.19.0-32-generic&apos;, java.version: &apos;1.8.0_72&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={userDataDir=/tmp/.com.google.Chrome.MPAhnC}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=48.0.2564.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: d28c7952d8f7e623c8e6a4fc03c66bb6
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
-	at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at com.sun.proxy.$Proxy3.click(Unknown Source)
-	at pages.HomePage.checkAllFilters(HomePage.java:235)
-	at streamTV.RegisterTest.Filtersssss(RegisterTest.java:53)
-</failure>
-  </testcase>
-  <testcase classname="streamTV.RegisterTest" name="createAndDelete" time="27.128">
-    <failure message="Wrestler wasn&apos;t deleted or exist wrestlers with a same name!" type="java.lang.RuntimeException">java.lang.RuntimeException: Wrestler wasn&apos;t deleted or exist wrestlers with a same name!
-	at pages.HomePage.checkDeletion(HomePage.java:144)
-	at streamTV.RegisterTest.createAndDelete(RegisterTest.java:13)
-</failure>
-  </testcase>
-  <testcase classname="streamTV.RegisterTest" name="createAndVerify" time="32.168">
+  <testcase classname="lastochkin.streamTV.RegisterTest" name="Filters" time="101.992"/>
+  <testcase classname="lastochkin.streamTV.RegisterTest" name="createAndDelete" time="44.027"/>
+  <testcase classname="lastochkin.streamTV.RegisterTest" name="createAndVerify" time="44.219">
     <failure message="Some fields contain wrong data!" type="java.lang.RuntimeException">java.lang.RuntimeException: Some fields contain wrong data!
-	at pages.HomePage.checkExeptions(HomePage.java:123)
-	at streamTV.RegisterTest.createAndVerify(RegisterTest.java:24)
+	at lastochkin.streamTV.pages.HomePage.checkExeptions(HomePage.java:124)
+	at lastochkin.streamTV.RegisterTest.createAndVerify(RegisterTest.java:24)
 </failure>
     <system-out>On the profile page the field  expected contains Kyivska but was: Region
 On the profile page the field  expected contains SK but was: FST
@@ -151,23 +73,16 @@ On the profile page the field expected contains Kenobi but was:
 On the profile page the field  expected contains Recieved but was: No card
 </system-out>
   </testcase>
-  <testcase classname="streamTV.RegisterTest" name="updateAndVerify" time="46.942">
+  <testcase classname="lastochkin.streamTV.RegisterTest" name="updateAndVerify" time="77.646">
     <failure message="Some fields contain wrong data!" type="java.lang.RuntimeException">java.lang.RuntimeException: Some fields contain wrong data!
-	at pages.HomePage.checkExeptions(HomePage.java:123)
-	at streamTV.RegisterTest.updateAndVerify(RegisterTest.java:36)
+	at lastochkin.streamTV.pages.HomePage.checkExeptions(HomePage.java:124)
+	at lastochkin.streamTV.RegisterTest.updateAndVerify(RegisterTest.java:36)
 </failure>
-    <system-out>On the profile page the field  expected contains Kyivska but was: Region
-On the profile page the field  expected contains SK but was: FST
-On the profile page the field expected contains Joda but was: 
-On the profile page the field expected contains Kenobi but was: 
-On the profile page the field  expected contains Recieved but was: No card
-After search result the field  expected contains GR but was: FS
-After search result the field  expected contains 10-04-2016 but was: 09-04-2016
-On the profile page the field  expected contains Zaporizka but was: Region
-On the profile page the field  expected contains MON but was: FST
+    <system-out>After search result the field  expected contains 2017 but was: 2016
 On the profile page the field expected contains ObiVan but was: 
 On the profile page the field expected contains DartaMol but was: 
-On the profile page the field  expected contains GR but was: FS
+On the profile page the field  expected contains Senior but was: Cadet
+On the profile page the field  expected contains 2017 but was: 2016
 On the profile page the field  expected contains Produced but was: No card
 </system-out>
   </testcase>

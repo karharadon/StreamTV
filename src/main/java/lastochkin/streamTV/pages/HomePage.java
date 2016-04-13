@@ -1,8 +1,7 @@
 package lastochkin.streamTV.pages;
 
-import lastochkin.streamTV.data.WrestlerData;
-import helper.ConfigProperties;
-import lastochkin.streamTV.pages.AbstractPage;
+import lastochkin.streamTV.data.Wrestler;
+import lastochkin.streamTV.helper.ConfigProperties;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,15 +24,15 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
-    public WrestlerData wrestler1 = new WrestlerData("Lana","Rey","12-05-1979","Del","Volynska","Kyivska",
+    public Wrestler wrestler1 = new Wrestler("Lana","Rey","12-05-1979","Del","Volynska","Kyivska",
             "Dinamo","SK","Joda","Kenobi","FS","Cadet","2016","Recieved");
-    public WrestlerData wrestler2 = new WrestlerData("Iogan","Mozart","12-05-1989","Amadei","Kyiv","Zaporizka",
+    public Wrestler wrestler2 = new Wrestler("Iogan","Mozart","12-05-1989","Amadei","Kyiv","Zaporizka",
             "Kolos","MON","ObiVan","DartaMol","GR","Senior","2017","Produced");
-    public WrestlerData wrestler3 = new WrestlerData("Nautilius","Pompilius","12-05-1989","Karavana","Kyiv","Zaporizka",
+    public Wrestler wrestler3 = new Wrestler("Nautilius","Pompilius","12-05-1989","Karavana","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler4 = new WrestlerData("Zigmund","Freid","12-05-1989","Petrovich","Kyiv","Zaporizka",
+    public Wrestler wrestler4 = new Wrestler("Zigmund","Freid","12-05-1989","Petrovich","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
-    public WrestlerData wrestler5 =new WrestlerData("Jaroslav","Mudryj","12-05-1989","Knjaz","Kyiv","Zaporizka",
+    public Wrestler wrestler5 =new Wrestler("Jaroslav","Mudryj","12-05-1989","Knjaz","Kyiv","Zaporizka",
             "Kolos","SK","ObiVan","DartaMol","FS","Senior","2017","Produced");
 
     public String wrestlerFullName1 = wrestler1.lastName + " " + wrestler1.firstName + " " + wrestler1.middleName;
@@ -61,14 +60,14 @@ public class HomePage extends AbstractPage {
         waitForPageLoad(driver);
     }
 
-    public void createWrestler(WrestlerData wrestler){
+    public void createWrestler(Wrestler wrestler){
         buttonCreateNewWrestler.click();
         fillAllFields(wrestler);
         buttonSave.click();
         waitWhenClickableAndClick(closeProfilePage,7);
     }
 
-    public void fillAllFields(WrestlerData wrestler) {
+    public void fillAllFields(Wrestler wrestler) {
         clearAndSendKeys(fieldLastName, wrestler.lastName);
         clearAndSendKeys(fieldFirstName, wrestler.firstName);
         clearAndSendKeys(fieldDateOfBirth, wrestler.dateOfBirth);
@@ -90,7 +89,7 @@ public class HomePage extends AbstractPage {
         buttonSearchFor.click();
     }
 
-    public void verifySearchResultWithCode(WrestlerData wrestler, String wrestlerFullName,ArrayList errors) { //TODO Fail. Element not found.Make try catch
+    public void verifySearchResultWithCode(Wrestler wrestler, String wrestlerFullName, ArrayList errors) { //TODO Fail. Element not found.Make try catch
         assertSearchResultWithCode(wrestlerFIO, wrestlerFullName, errors);
         assertSearchResultWithCode(wrestlerRegion, wrestler.regionFirst, errors);
         assertSearchResultWithCode(wrestlerFST, wrestler.fstFirst, errors);
@@ -100,7 +99,7 @@ public class HomePage extends AbstractPage {
         assertSearchResultWithCode(wrestlerChanged, sysDate, errors);
     }
 
-    public void verifyProfileDataWithCode(WrestlerData wrestler, ArrayList errors){
+    public void verifyProfileDataWithCode(Wrestler wrestler, ArrayList errors){
         wrestlerFIO.click();
         assertProfileDataWithCode2(fieldLastName, wrestler.lastName, errors);
         assertProfileDataWithCode2(fieldFirstName, wrestler.firstName, errors);

@@ -3,7 +3,7 @@
 <suite name="streamTV.TestNG by packages">
     <test verbose="1" name="streamTV">
         <packages>
-            <package name="streamTV"/>
+            <package name="lastochkin.streamTV"/>
         </packages>
     </test>
 </suite>

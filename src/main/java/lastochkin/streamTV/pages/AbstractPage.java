@@ -1,6 +1,6 @@
 package lastochkin.streamTV.pages;
 
-import helper.ScreenShot;
+import lastochkin.streamTV.helper.ScreenShot;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
