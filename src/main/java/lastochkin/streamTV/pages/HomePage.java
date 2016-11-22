@@ -49,6 +49,7 @@ public class HomePage extends AbstractPage {
     private final Date today = Calendar.getInstance().getTime();
     private final String sysDate = dateFormat.format(today);
 
+
     public ArrayList<String> errorsAfterCreating = new ArrayList<>();
     public ArrayList<String> errorsAfterUpdating = new ArrayList<>();
 
