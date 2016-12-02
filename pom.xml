@@ -12,7 +12,7 @@
     <!-- Нужно для передачи браузера с консоли в системные переменные.Вариант 1:mvn test -Dbrowser=chrome
     В коде переменная browser вытягивается через String browser = System.getProperty("browser");-->
     <properties>
-        <browser>chrome</browser> <!--Значение по умолчанию. Если не через консоль и -Dbrowser не указывается-->
+        <browser>firefox</browser> <!--Значение по умолчанию. Если не через консоль и -Dbrowser не указывается-->
         <selenium.test.jvmargs><![CDATA[-Dbrowser=${browser}]]></selenium.test.jvmargs>
     </properties>
     <!-- .................................................................................................-->
